@@ -30,8 +30,7 @@ func retrieveToken(tokenFile string) (token string) {
 	return
 }
 
-func storeToken(tokenFile string, j interface{}) {
-	token := j.(map[string]interface{})["token"].(string)
+func storeToken(tokenFile string, token string) {
 	fmt.Printf("TOKEN: %s\n", token)
 	err := ioutil.WriteFile(tokenFile, []byte(token), 0644)
 	handle(err)

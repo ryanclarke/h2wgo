@@ -1,7 +1,9 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
-func TestItWorks(t *testing.T) {
+func TestMainWorks(*testing.T) {
 	main()
 }

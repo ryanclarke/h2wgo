@@ -19,14 +19,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math"
 	"net/http"
 	"os"
 	"strings"
+	"unicode/utf8"
 
 	"github.com/howeyc/gopass"
-	// "github.com/ryanclarke/h2wgo/gorhill"
-	"math"
-	"unicode/utf8"
 )
 
 const (
@@ -54,7 +53,8 @@ func Login(email string, password string, tokenFile string) {
 	printDebug(resp)
 
 	if resp.StatusCode == 200 {
-		storeToken(tokenFile, jbody)
+		token := jbody.(map[string]interface{})["token"].(string)
+		storeToken(tokenFile, token)
 	}
 }
 
